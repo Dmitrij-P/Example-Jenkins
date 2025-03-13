@@ -51,9 +51,10 @@ Im Internet lassen sich einige Tutorial finden, wie Jenkins mit Github verbunden
 Der einfachste Ansatz zeige ich euch in den folgenden Schritten:
 # In Github
 1. Github besuchen
-2. Gehe zu "Settings" -> "Developer settings"
-3. Gehe zu "Tokens (classic)"
-4. Erstelle einen Token und Kopiere diesen
+2. Klicke rechts auf dein Profil und Gehe zu "Settings"
+3. Gehe zu "Developer settings"
+4. Gehe zu "Tokens (classic)" oder fine-grained Tokens und wählen Sie die Rechte aus, die Sie benötigen. Für "Classic" einfach "repo". Für "fine-grained Tokens" wählen Sie "Contents" und "Metadata"
+6. Erstelle einen Token und Kopiere diesen
 
 # Im Github Repository
 1. Erstellen Sie eine Datei mit den Namen "Jenkinsfile" und fügen Sie testweise folgendes ein:

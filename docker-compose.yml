@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  jenkins:
+    build: .
+    restart: always
+    privileged: true
+    user: root
+    ports:
+      - ${JENKENS_PORT}:${JENKENS_PORT}
+      - 50000:50000
+    container_name: jenkins
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./jenkins.yaml:/var/jenkins_home/casc_configs/jenkins.yaml
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=${JENKENS_runSetupWizard}
+      - CASC_JENKINS_CONFIG=/var/jenkins_home/casc_configs
+    networks:
+      - jenkins
+
+  docker-proxy:
+    image: alpine/socat:1.7.4.4
+    command: tcp-listen:${DOCKER_PROXY_EXPOSE_PORT},fork,reuseaddr unix-connect:/var/run/docker.sock
+    container_name: docker-proxy
+    restart: always
+    ports:
+      - "127.0.0.1:${DOCKER_PROXY_EXPOSE_PORT}:${DOCKER_PROXY_INTERN_PORT}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      jenkins:
+        ipv4_address: ${DOCKER_PROXY_IPV4}
+
+networks:
+  jenkins:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.23.0.0/24

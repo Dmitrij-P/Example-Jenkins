@@ -1,8 +1,9 @@
 Dieses Repository dient als ein schneller start, um mit Jenkins automatische Jobs auszuführen.
 Ich habe diese Informationen für mich selber aufgeschrieben, um diese an einem späteren Zeitpunkt wieder zu verinnerlichen. 
-Vielleicht helfen diese Hinweise euch. Bitte beachtet, dass es sich um ein schnellen Start mit Hinweisen handeln und nicht auf ein komplettes Tutorial und ein Muster Beispiel, wie Jenkins bedient werden muss.
+Vielleicht helfen diese Hinweise euch.
 
-Es werden Hinweise und Tips gegeben, aber es ist kein komplettes Tutorial. 
+Es werden Hinweise und Tips gegeben, aber es ist kein komplettes Tutorial mit einem Muster Beispiel! 
+Zusätzlich wird Docker Compose verwendet, um Jenkins schnell einzurichten.
 
 # Folgende Themen werden angesprochen:
 1. Was es bei der Installation zu beachten gibt.

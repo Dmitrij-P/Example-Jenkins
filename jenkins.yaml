@@ -1,10 +1,7 @@
 jenkins:
   systemMessage: "Jenkins ist vorkonfiguriert mit JCasC"
 
-#  # UI-Einstellungen (Dark Mode)
 appearance:
-#  themeManager:
-#    theme: "dark"
   locale:
     systemLocale: en
     ignoreAcceptLanguage: true

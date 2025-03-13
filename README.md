@@ -58,6 +58,7 @@ Der einfachste Ansatz zeige ich euch in den folgenden Schritten:
 
 # Im Github Repository
 1. Erstellen Sie eine Datei mit den Namen "Jenkinsfile" und fügen Sie testweise folgendes ein:
+
 pipeline {
   agent {
     docker {
@@ -73,6 +74,7 @@ pipeline {
     }
   }
 }
+
 2. Commiten Sie!
 
 # In Jenkins

@@ -53,3 +53,38 @@ Der einfachste Ansatz zeige ich euch in den folgenden Schritten:
 1.2. Gehe zu "Settings" -> "Developer settings"
 1.3. Gehe zu "Tokens (classic)"
 1.4. Erstelle einen Token und Kopiere diesen
+
+2. Im Github Repository
+2.1 Erstellen Sie eine Datei mit den Namen "Jenkinsfile" und fügen Sie testweise folgendes ein:
+    pipeline {
+        agent {
+            docker {
+                image 'jenkins/agent:alpine-jdk21'
+            }
+        }
+        
+        stages {
+            stage('Hello') {
+                steps {
+                    echo 'Hello World'
+                }
+            }
+        }
+    }
+2.2 Commiten Sie!
+
+3. In Jenkins
+3.1. Besuche Jenkins
+3.2. Erstelle eine Pipeline: "New Item" -> "Pipeline"
+3.3. Wähle unter "Pipeline"-> "Definition" folgendes aus "Pipeline script from SCM"
+3.4. Wähle darauf unter SCM "Git" aus.
+3.5. Kopiere aus Github die URL des Repository, welches du in Jenkins einbinden möchtest.
+  Die Adresse kann in Github im Repository in "<> Code" -> "local" -> "HTTPS" gefunden werden.
+3.6. In Jenkins unter "Credentials" erstellen Sie eine neue Credentials.
+3.7. Ihr Github Username soll in Username und das Password soll den Token aus 1.3 beinhalten.
+3.8. ID können Sie selbst benennen. (Z.B. Github Namen oder "Test")
+3.9. Speichern und auswählen
+3.10. Unter Branch Specifier ihren Branch auswählen. Vorsicht es kann sein, dass ihr Branch "Main" heißt. Vergleichen Sie es am besten!
+3.11. Speichern Sie den Branch und starten Sie einen Build.
+
+

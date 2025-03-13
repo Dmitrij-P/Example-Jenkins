@@ -55,7 +55,7 @@ Der einfachste Ansatz zeige ich euch in den folgenden Schritten:
 4. Erstelle einen Token und Kopiere diesen
 
 # Im Github Repository
-1 Erstellen Sie eine Datei mit den Namen "Jenkinsfile" und fügen Sie testweise folgendes ein:
+1. Erstellen Sie eine Datei mit den Namen "Jenkinsfile" und fügen Sie testweise folgendes ein:
     pipeline {
         agent {
             docker {

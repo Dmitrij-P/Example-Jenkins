@@ -86,5 +86,4 @@ Der einfachste Ansatz zeige ich euch in den folgenden Schritten:
 9. Speichern und auswählen
 10. Unter Branch Specifier ihren Branch auswählen. Vorsicht es kann sein, dass ihr Branch "Main" heißt. Vergleichen Sie es am besten!
 11. Speichern Sie den Branch und starten Sie einen Build.
-
-
+12. Sie sollten eine Erfolgreiche Meldung zurück bekommen und in den Logs sollte Hello World zu finden sein.

@@ -1,64 +1,82 @@
-Dieses Repository dient als ein schneller start, um mit Jenkins automatische Jobs auszuführen.
-Ich habe diese Informationen für mich selber aufgeschrieben, um diese an einem späteren Zeitpunkt wieder zu verinnerlichen. 
-Vielleicht helfen diese Hinweise euch.
+# Schnellstart mit Jenkins
 
-Es werden Hinweise und Tips gegeben, aber es ist kein komplettes Tutorial mit einem Muster Beispiel! 
-Zusätzlich wird Docker Compose verwendet, um Jenkins schnell einzurichten.
+Dieses Repository dient als schneller Einstieg, um mit Jenkins automatisierte Jobs auszuführen. Ich habe diese Informationen für mich selbst aufgeschrieben, um sie später wieder nachzulesen. Vielleicht helfen diese Hinweise auch euch.
 
-# Folgende Themen werden angesprochen:
-1. Was es bei der Installation zu beachten gibt.
-2. Auf welche Weise Jobs, nach meiner Einschätzung, am einfachsten und Strukturiersten aufgebaut werden sollen
-3. Wie kann ein Privater Github Repository durch einen Job erreicht wird 
+Es werden Tipps und Hinweise gegeben, aber es handelt sich nicht um ein vollständiges Tutorial mit einem Musterbeispiel! Zusätzlich wird Docker Compose verwendet, um Jenkins schnell einzurichten.
 
-# Folgende Themen werden NICHT angesprochen:
-1. Wie Jenkins installiert und Configuriert wird.
-2. Welche Jobs es gibt und was die Unterschiede sind.
-3.1. Welche andere Arten von Verbindungen mit einem Privaten Github Account gibt.
-3.2. Wie kann Github durch einen Commit einen Job auslösen
-3.3. Es wird nur auf Github eingegangen und nicht auf Gitlab oder ein andere Versionskontrol Plattform
+## Themen, die behandelt werden:
 
-# Um den schnellen Start in Jenkins zu vereinfachen habe ich ein Dockerimage und ein Docker Compose File vorbereitet.
-1. Downloade das Repository und installiere Docker Desktop.
-2. begebe dich in den Ordner mit einem Terminal
-3. führe "docker compose up" aus
-4. besuche "localhost:8080" in einem Webbrowser deiner Wahl
+1. Wichtige Aspekte bei der Installation.
+2. Wie Jobs nach meiner Einschätzung am einfachsten und strukturiertesten aufgebaut werden sollten.
+3. Wie ein privates GitHub-Repository durch einen Job erreichbar ist.
 
-# Schnelles einrichten von Jenkins
-Jenkins sollte im Webbrowser laufen und fragt nach einem Schlüssel, um fortfahren zu können. 
-Im Terminal, worin der Befehl "docker compose up" ausgeführt worden ist, finden sie den Schlüssel.
-Falls Sie "docker compose up -d" ausgeführt haben, können sie in Docker Desktop im erstellten Container unter Logs den Schlüssel finden.
+## Themen, die NICHT behandelt werden:
 
-# Kurze Erklärung des Dockerfiles
-Um schnell etwas zu testen, überspringe ich gerne die Schlüssel eingabe und die Konfiguration eines Users.
-Dadurch werden ebenfalls die Plugins nicht installiert, weshalb alle wichtigen Plugins in dem Dockerfile installiert werden.
-Wenn Sie das erste mal mit Jenkins arbeiten, dann überspringen sie nicht die wichtigen Schritte!
-Damit Jenkins Docker verwenden kann, muss es im System installiert sein. Jenkins wird im Docker Container ausgeführt, weshalb ich es einfach darin installiere. Es gibt andere möglichkeiten, aber zum schnellen Start reicht es aus.
+1. Wie Jenkins installiert und konfiguriert wird.
+2. Welche Job-Typen es gibt und worin sie sich unterscheiden.
+3. Weitere Arten der Verbindung mit einem privaten GitHub-Account.
+4. Wie GitHub durch einen Commit einen Job auslösen kann.
+5. Andere Versionskontrollplattformen wie GitLab werden nicht behandelt.
 
-# Hinweis 1: Windows < Linux
-Jenkins wurde für Linux Distrubutoren entwickelt. 
-Eine Installation auf Windows kann Probleme versuchen. Z.B. können Pipelines die Dockerimages verwenden, eine Fehlermeldung zurückgeben, die aussagt, dass "docker" nicht erkannt wird. 
-Jenkins wird hier in einem Docker Container mit Linux aufgebaut, weshalb der Fehler in dieser Umgebung nicht vorkommen kann. 
+## Jenkins schnell starten
 
-# Hinweis 2: Jobs < Pipelines
-Es sollten Pipelines verwendet werden, weil diese einfacher einzurichten sind und einfach Superior sind.
+Um den Einstieg in Jenkins zu vereinfachen, habe ich ein Docker-Image und eine Docker-Compose-Datei vorbereitet.
 
-Die Pipelines sollten im Repository befinden, damit nicht an einem Backup gedacht werden muss und damit das Projekt Organisierter ist. 
-Im Repository befindet sich das Projekt und die dafür entwickelte Pipeline.
-Alles lässt sich im Repository finden.
+### Schritte:
 
-# Hinweis 3: Credentials
-Im Internet lassen sich einige Tutorial finden, wie Jenkins mit Github verbunden werden kann.
-Der einfachste Ansatz zeige ich euch in den folgenden Schritten:
-# In Github
-1. Github besuchen
-2. Klicke rechts auf dein Profil und Gehe zu "Settings"
-3. Gehe zu "Developer settings"
-4. Gehe zu "Tokens (classic)" oder fine-grained Tokens und wählen Sie die Rechte aus, die Sie benötigen. Für "Classic" einfach "repo". Für "fine-grained Tokens" wählen Sie "Contents" und "Metadata"
-6. Erstelle einen Token und Kopiere diesen
+1. Lade das Repository herunter und installiere Docker Desktop.
+2. Öffne ein Terminal und navigiere in den Ordner des Repositorys.
+3. Führe den Befehl `docker compose up` aus.
+4. Besuche `localhost:8080` in einem Webbrowser deiner Wahl.
 
-# Im Github Repository
-1. Erstellen Sie eine Datei mit den Namen "Jenkinsfile" und fügen Sie testweise folgendes ein:
+## Schnelle Einrichtung von Jenkins
 
+Jenkins sollte im Webbrowser starten und nach einem Schlüssel fragen, um fortzufahren.
+
+- Falls du `docker compose up` ausgeführt hast, findest du den Schlüssel im Terminal.
+- Falls du `docker compose up -d` genutzt hast, kannst du den Schlüssel in den Logs des erstellten Containers in Docker Desktop finden.
+
+## Kurze Erklärung des Dockerfiles
+
+Um Tests schnell durchzuführen, überspringe ich gerne die Schlüssel-Eingabe und die Benutzerkonfiguration. Dadurch werden die Plugins nicht automatisch installiert, weshalb alle wichtigen Plugins im Dockerfile hinterlegt sind. Falls du Jenkins zum ersten Mal verwendest, solltest du diese Schritte jedoch nicht überspringen! Damit Jenkins Docker verwenden kann, muss Docker im System installiert sein. 
+
+Da Jenkins hier in einem Docker-Container ausgeführt wird, installiere ich Docker direkt im Container. Es gibt alternative Methoden, aber für einen schnellen Start reicht diese aus.
+
+## Hinweis 1: Windows < Linux
+
+Jenkins wurde für Linux entwickelt. Eine Installation auf Windows kann zu Problemen führen. Zum Beispiel können Pipelines, die Docker-Images verwenden, eine Fehlermeldung ausgeben, die besagt, dass "docker" nicht erkannt wird.
+
+Da Jenkins hier in einem Linux-basierten Docker-Container läuft, tritt dieser Fehler in dieser Umgebung nicht auf.
+
+## Hinweis 2: Jobs < Pipelines
+
+Es sollten bevorzugt Pipelines verwendet werden, da sie einfacher einzurichten sind.
+
+Die Pipelines sollten sich im Repository befinden, damit:
+
+- keine separaten Backups erforderlich sind,
+- das Projekt organisiert bleibt,
+- alle relevanten Informationen zentral gespeichert sind.
+
+## Hinweis 3: Credentials
+
+Im Internet gibt es viele Tutorials dazu, wie Jenkins mit GitHub verbunden wird. Hier ist meiner Meinung der einfachste Ansatz:
+
+### In GitHub
+
+1. GitHub aufrufen.
+2. Rechts auf das Profil klicken und zu "Settings" gehen.
+3. Zu "Developer settings" navigieren.
+4. "Tokens (classic)" oder "fine-grained Tokens" auswählen und die benötigten Rechte setzen:
+   - Classic: "repo" auswählen.
+   - Fine-grained Tokens: "Contents" und "Metadata" auswählen.
+5. Token erstellen und kopieren.
+
+### Im GitHub-Repository
+
+1. Eine Datei namens `Jenkinsfile` erstellen und folgendes Beispiel eintragen:
+
+```groovy
 pipeline {
   agent {
     docker {
@@ -74,20 +92,26 @@ pipeline {
     }
   }
 }
+```
 
-2. Commiten Sie!
+2. Datei committen.
 
-# In Jenkins
-1. Besuche Jenkins
-2. Erstelle eine Pipeline: "New Item" -> "Pipeline"
-3. Wähle unter "Pipeline"-> "Definition" folgendes aus "Pipeline script from SCM"
-4. Wähle darauf unter SCM "Git" aus.
-5. Kopiere aus Github die URL des Repository, welches du in Jenkins einbinden möchtest.
-  Die Adresse kann in Github im Repository in "<> Code" -> "local" -> "HTTPS" gefunden werden.
-6. In Jenkins unter "Credentials" erstellen Sie eine neue Credentials.
-7. Ihr Github Username soll in Username und das Password soll den Token aus 1.3 beinhalten.
-8. ID können Sie selbst benennen. (Z.B. Github Namen oder "Test")
-9. Speichern und auswählen
-10. Unter Branch Specifier ihren Branch auswählen. Vorsicht es kann sein, dass ihr Branch "Main" heißt. Vergleichen Sie es am besten!
-11. Speichern Sie den Branch und starten Sie einen Build.
-12. Sie sollten eine Erfolgreiche Meldung zurück bekommen und in den Logs sollte Hello World zu finden sein.
+### In Jenkins
+
+1. Jenkins öffnen.
+2. Eine neue Pipeline erstellen: "New Item" -> "Pipeline".
+3. Unter "Pipeline" -> "Definition" die Option "Pipeline script from SCM" auswählen.
+4. Als SCM "Git" auswählen.
+5. Die URL des Repositorys aus GitHub kopieren:
+   - Diese ist in GitHub unter "<> Code" -> "Local" -> "HTTPS" zu finden.
+6. In Jenkins unter "Credentials" eine neue Anmeldeinformation erstellen:
+   - Username: Dein GitHub-Benutzername.
+   - Passwort: Der kopierte Token aus GitHub.
+   - ID: Beliebig wählen (z. B. GitHub-Name oder "Test").
+7. Speichern und Credential auswählen.
+8. Unter "Branch Specifier" den richtigen Branch angeben (achte darauf, ob der Branch "main" heißt!).
+9. Speichern und einen Build starten.
+10. Falls alles korrekt eingerichtet wurde, sollte die Pipeline erfolgreich durchlaufen und "Hello World" in den Logs ausgegeben werden.
+
+Viel Erfolg mit Jenkins!
+
